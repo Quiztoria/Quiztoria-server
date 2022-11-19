@@ -4,6 +4,7 @@ package org.quiztoria.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,9 +21,11 @@ public class Quiz{
     @Getter
     private Long Id;
     @Getter
+    @Setter
     private String QuizName;
     @OneToMany
     @Getter
+    @Setter
     private List<Question> Questions;
 
 

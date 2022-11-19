@@ -1,4 +1,4 @@
-package org.quiztoria.server;
+package org.quiztoria.server.repo;
 
 import org.quiztoria.server.entities.Quiz;
 import org.springframework.data.jpa.repository.JpaRepository;

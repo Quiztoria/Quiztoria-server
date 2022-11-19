@@ -1,7 +1,7 @@
 package org.quiztoria.server;
 
-import io.swagger.annotations.ApiModel;
 import org.quiztoria.server.entities.Question;
+import org.quiztoria.server.repo.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,7 @@
 package org.quiztoria.server;
 
 import org.quiztoria.server.entities.Quiz;
+import org.quiztoria.server.repo.QuizRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
