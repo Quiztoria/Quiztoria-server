@@ -34,9 +34,9 @@ public class Question {
     @Setter
     private String AnswOpt3;
     @Setter
-    private Date DateStart;
+    private Integer DateStart;
     @Setter
-    private Date DateEnd;
+    private Integer DateEnd;
 
     @JsonIgnore
     public void nullId(){
