@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/question")
-@ApiModel(subTypes = {Question.class})
+@CrossOrigin(origins = "http://localhost:8080")
 public class QuestionRESTController {
     @Autowired
     private QuestionRepo repo;
@@ -18,8 +18,20 @@ public class QuestionRESTController {
         return repo.findById(id);
     }
 
+    /**
+     * Creates a new question
+     * @param q
+     * @return
+     */
     @PostMapping
     public Question saveQuestion(@RequestBody Question q){
+        q.nullId();
+        return repo.saveAndFlush(q);
+    }
+
+    @PostMapping("/{id}")
+    public Question saveQuestion(@RequestBody Question q, @PathVariable Long id){
+        q.ensureId(id);
         return repo.saveAndFlush(q);
     }
 }
