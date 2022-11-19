@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/question")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 public class QuestionRESTController {
     @Autowired
     private QuestionRepo repo;
@@ -24,13 +24,13 @@ public class QuestionRESTController {
      * @return
      */
     @PostMapping
-    public Question saveQuestion(@RequestBody Question q){
+    public Question newQuestion(@RequestBody Question q){
         q.nullId();
         return repo.saveAndFlush(q);
     }
 
     @PostMapping("/{id}")
-    public Question saveQuestion(@RequestBody Question q, @PathVariable Long id){
+    public Question editQuestion(@RequestBody Question q, @PathVariable Long id){
         q.ensureId(id);
         return repo.saveAndFlush(q);
     }
