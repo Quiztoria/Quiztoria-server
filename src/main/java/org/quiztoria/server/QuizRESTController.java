@@ -25,7 +25,7 @@ public class QuizRESTController {
         return repo.save(q);
     }
     @PostMapping("/{id}")
-    public Quiz editQuiz(@RequestBody Quiz q, @PathVariable Long id){
+        public Quiz editQuiz(@RequestBody Quiz q, @PathVariable Long id){
         q.ensureId(id);
         return repo.save(q);
     }
