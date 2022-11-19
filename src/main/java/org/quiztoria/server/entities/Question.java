@@ -52,7 +52,7 @@ public class Question {
         answ.add(this.AnswOpt1);
         answ.add(this.AnswOpt2);
         answ.add(this.AnswOpt3);
-        return null;
+        return answ;
     }
 
     public String getCorrectAnswer(){
