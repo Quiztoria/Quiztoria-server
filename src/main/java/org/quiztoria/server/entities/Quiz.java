@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -23,7 +20,7 @@ public class Quiz{
     @Getter
     @Setter
     private String QuizName;
-    @OneToMany
+    @OneToMany//(cascade = CascadeType.PERSIST)
     @Getter
     @Setter
     private List<Question> Questions;

@@ -22,12 +22,12 @@ public class QuizRESTController {
     @PostMapping
     public Quiz newQuiz(@RequestBody Quiz q){
         q.nullId();
-        return repo.save(q);
+        return repo.saveAndFlush(q);
     }
     @PostMapping("/{id}")
         public Quiz editQuiz(@RequestBody Quiz q, @PathVariable Long id){
         q.ensureId(id);
-        return repo.save(q);
+        return repo.saveAndFlush(q);
     }
 
 
