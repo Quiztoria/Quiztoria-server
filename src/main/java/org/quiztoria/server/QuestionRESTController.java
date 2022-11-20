@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,8 +46,18 @@ public class QuestionRESTController {
         return repo.findAll(PageRequest.of(page, itemsPerPage)).getContent();
     }
 
+    @GetMapping("/multiple")
+    public List<Question> getMultiple(@RequestParam List<Long> questionIds)  {
+        return repo.findAllById(questionIds);
+    }
     @GetMapping("/all")
     public List<Question> getAll()  {
         return repo.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable Long id){
+        repo.deleteById(id);
+        return true;
     }
 }
