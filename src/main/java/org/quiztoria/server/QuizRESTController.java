@@ -54,12 +54,12 @@ public class QuizRESTController {
         return true;
     }
 
-    @DeleteMapping("{id}/{qid}")
-    public Quiz deleteQuestion(@PathVariable Long id,@PathVariable Long qid){
+    @DeleteMapping("{id}/deletequestion")
+    public Quiz deleteQuestion(@PathVariable Long id,@RequestParam Long questionid){
         Quiz q = repo.findById(id).get();
         List<Question> newQuestions = new ArrayList<Question>();
         for (int i = 0; i<q.getQuestions().size();i++){
-            if(!q.getQuestions().get(i).getId().equals(qid)){
+            if(!q.getQuestions().get(i).getId().equals(questionid)){
                 newQuestions.add(q.getQuestions().get(i));
             }
         }
