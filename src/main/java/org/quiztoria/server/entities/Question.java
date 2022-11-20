@@ -37,6 +37,9 @@ public class Question {
     private Integer DateStart;
     @Setter
     private Integer DateEnd;
+    @Getter
+    @Setter
+    private String imgBase64;
 
     @JsonIgnore
     public void nullId(){
