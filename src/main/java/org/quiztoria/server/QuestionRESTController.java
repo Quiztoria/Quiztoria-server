@@ -1,6 +1,7 @@
 package org.quiztoria.server;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,21 +31,22 @@ public class QuestionRESTController {
             @ApiResponse(code = 404, message = "Question not found")
     })
     @GetMapping("/{id}")
-    public Optional<Question> getQuestion(@PathVariable Long id){
+    public Optional<Question> getQuestion(@PathVariable @ApiParam(name = "id",
+            value = "Question id", example = "3")Long id){
         return repo.findById(id);
     }
 
     /**
      * Creates a new question
-     * @param q
+     * @param question
      * @return
      */
     @ApiOperation(value = "Creates a new question")
     @ApiResponse(code = 200, message = "Successfully created question")
     @PostMapping
-    public Question newQuestion(@RequestBody Question q){
-        q.nullId();
-        return repo.saveAndFlush(q);
+    public Question newQuestion(@RequestBody Question question){
+        question.nullId();
+        return repo.saveAndFlush(question);
     }
 
     @ApiOperation(value = "Edit question by id")
@@ -53,9 +55,9 @@ public class QuestionRESTController {
             @ApiResponse(code = 404, message = "Question not found")
     })
     @PostMapping("/{id}")
-    public Question editQuestion(@RequestBody Question q, @PathVariable Long id){
-        q.ensureId(id);
-        return repo.saveAndFlush(q);
+    public Question editQuestion(@RequestBody Question question, @PathVariable Long id){
+        question.ensureId(id);
+        return repo.saveAndFlush(question);
     }
 
     @GetMapping
