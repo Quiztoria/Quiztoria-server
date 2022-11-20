@@ -33,7 +33,7 @@ public class UserRESTController {
                 loginDto.getEmail(), loginDto.getPassword()));
 
         SecurityContextHolder.getContext()  .setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
+        return new ResponseEntity<>("{\"resp\":\"ok\"}", HttpStatus.OK);
     }
 
     @PostMapping("/signup")
@@ -55,7 +55,7 @@ public class UserRESTController {
 
         userRepo.save(user);
 
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return new ResponseEntity<>("{\"resp\":\"ok\"}", HttpStatus.OK);
 
     }
 
