@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(originPatterns = { "*" },allowCredentials = "true")
+@CrossOrigin(originPatterns = { "" },allowCredentials = "true")
 public class UserRESTController {
     @Autowired
     private AuthenticationManager authenticationManager;

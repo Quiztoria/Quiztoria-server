@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/question")
-@CrossOrigin(originPatterns = { "*" },allowCredentials = "true")
+@CrossOrigin(origins = "*")
 public class QuestionRESTController {
 
     @Autowired
