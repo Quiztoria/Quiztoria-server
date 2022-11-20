@@ -44,4 +44,9 @@ public class QuestionRESTController {
     )  {
         return repo.findAll(PageRequest.of(page, itemsPerPage)).getContent();
     }
+
+    @GetMapping("/all")
+    public List<Question> getAll()  {
+        return repo.findAll();
+    }
 }
