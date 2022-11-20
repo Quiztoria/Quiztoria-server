@@ -34,8 +34,10 @@ public class Question {
     @Setter
     private String AnswOpt3;
     @Setter
+    @Getter
     private Integer dateStart;
     @Setter
+    @Getter
     private Integer dateEnd;
     @Getter
     @Setter

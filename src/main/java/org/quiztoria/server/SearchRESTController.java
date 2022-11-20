@@ -21,7 +21,7 @@ public class SearchRESTController {
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "itemsPerPage", defaultValue = "10") int itemsPerPage,
             @RequestParam(value = "yearBegin") int yearBegin,
-            @RequestParam(value = "yearBegin") int yearEnd
+            @RequestParam(value = "yearEnd") int yearEnd
     ){
         return repo.findByDateEndGreaterThanEqualAndDateStartLessThanEqual(yearBegin,yearEnd, PageRequest.of(page, itemsPerPage));
     }
