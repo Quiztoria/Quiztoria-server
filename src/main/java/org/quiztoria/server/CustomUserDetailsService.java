@@ -26,7 +26,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String Email) throws UsernameNotFoundException {
         org.springframework.security.core.userdetails.User.UserBuilder builder = null;
         User user = userRepo.findByEmail(Email);
-        System.out.println(user+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if (user==null) {
             throw new UsernameNotFoundException(Email);
         }else{
