@@ -11,7 +11,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/search")
-@CrossOrigin(origins = "*",allowCredentials = "true")
+@CrossOrigin(originPatterns = { "*" },allowCredentials = "true")
 public class SearchRESTController {
     @Autowired
     private QuestionRepo repo;
