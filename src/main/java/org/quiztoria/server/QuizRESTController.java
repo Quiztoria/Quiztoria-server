@@ -36,5 +36,11 @@ public class QuizRESTController {
         return repo.saveAndFlush(q);
     }
 
+    @DeleteMapping("{id}")
+    public boolean deleteQuiz(@PathVariable Long id){
+        repo.deleteById(id);
+        return true;
+    }
+
 
 }
