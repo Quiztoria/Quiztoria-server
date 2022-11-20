@@ -32,7 +32,7 @@ public class QuestionRESTController {
     })
     @GetMapping("/{id}")
     public Optional<Question> getQuestion(@PathVariable @ApiParam(name = "id",
-            value = "Question id", example = "3")Long id){
+            value = "Question id", example = "3") Long id){
         return repo.findById(id);
     }
 
@@ -55,7 +55,8 @@ public class QuestionRESTController {
             @ApiResponse(code = 404, message = "Question not found")
     })
     @PostMapping("/{id}")
-    public Question editQuestion(@RequestBody Question question, @PathVariable Long id){
+    public Question editQuestion(@RequestBody Question question, @PathVariable @ApiParam
+            (name = "id", value = "Question id", example = "3") Long id){
         question.ensureId(id);
         return repo.saveAndFlush(question);
     }
@@ -71,7 +72,8 @@ public class QuestionRESTController {
     @ApiOperation(value = "Get multiple questions")
     @ApiResponse(code = 200, message = "Successfully retrieved questions")
     @GetMapping("/multiple")
-    public List<Question> getMultiple(@RequestParam List<Long> questionIds)  {
+    public List<Question> getMultiple(@RequestParam @ApiParam(name = "questionIds",
+            value = "List of requested questions id-s", example = "[3, 6, 9]") List<Long> questionIds)  {
         return repo.findAllById(questionIds);
     }
 
@@ -86,7 +88,8 @@ public class QuestionRESTController {
     @ApiOperation(value = "Delete question")
     @ApiResponse(code = 200, message = "Successfully deleted question")
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable Long id){
+    public boolean delete(@PathVariable @ApiParam(name = "id",
+            value = "Question id", example = "3") Long id){
         repo.deleteById(id);
         return true;
     }

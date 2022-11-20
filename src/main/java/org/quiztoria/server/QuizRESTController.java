@@ -67,4 +67,9 @@ public class QuizRESTController {
         q.setQuestions(newQuestions);
         return repo.saveAndFlush(q);
     }
+
+    @GetMapping("/all")
+    public List<Quiz> getAll()  {
+        return repo.findAll();
+    }
 }
