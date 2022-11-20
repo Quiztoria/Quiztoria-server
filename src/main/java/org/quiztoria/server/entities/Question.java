@@ -34,9 +34,9 @@ public class Question {
     @Setter
     private String AnswOpt3;
     @Setter
-    private Integer DateStart;
+    private Integer dateStart;
     @Setter
-    private Integer DateEnd;
+    private Integer dateEnd;
     @Getter
     @Setter
     private String imgBase64;

@@ -4,6 +4,7 @@ package org.quiztoria.server;
 import org.quiztoria.server.entities.Question;
 import org.quiztoria.server.repo.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class SearchRESTController {
             @RequestParam(value = "yearBegin") int yearBegin,
             @RequestParam(value = "yearBegin") int yearEnd
     ){
-        return null;
+        return repo.findByDateEndGreaterThanEqualAndDateStartLessThanEqual(yearBegin,yearEnd, PageRequest.of(page, itemsPerPage));
     }
 
 
@@ -30,8 +31,8 @@ public class SearchRESTController {
     @GetMapping("/by-time-range/all")
     public List<Question> searchAllQuestionsByTimeRange(
             @RequestParam(value = "yearBegin") int yearBegin,
-            @RequestParam(value = "yearBegin") int yearEnd
+            @RequestParam(value = "yearEnd") int yearEnd
     ){
-        return null;
+        return repo.findAllByDateEndGreaterThanEqualAndDateStartLessThanEqual(yearBegin,yearEnd);
     }
 }
