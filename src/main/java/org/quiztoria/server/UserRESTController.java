@@ -55,7 +55,7 @@ public class UserRESTController {
 
         userRepo.save(user);
 
-        return new ResponseEntity<>("\"{\"resp\":\"ok\"}\"", HttpStatus.OK);
+        return new ResponseEntity<>("{\"resp\":\"ok\"}", HttpStatus.OK);
 
     }
 
