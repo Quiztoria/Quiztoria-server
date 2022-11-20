@@ -41,7 +41,7 @@ public class UserRESTController {
         boolean validEmail = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$").matcher(signUpDto.getEmail()).matches();
         if(!validEmail){
-            return new ResponseEntity<>("{\"resp\":\"ok\"}", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Incorrect email address.", HttpStatus.BAD_REQUEST);
         }
         // add check for user exists in a DB
         if(userRepo.existsByEmail(signUpDto.getEmail())){
@@ -55,7 +55,7 @@ public class UserRESTController {
 
         userRepo.save(user);
 
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return new ResponseEntity<>("\"{\"resp\":\"ok\"}\"", HttpStatus.OK);
 
     }
 
