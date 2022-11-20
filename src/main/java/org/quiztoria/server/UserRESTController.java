@@ -13,6 +13,8 @@ import org.quiztoria.server.Dto.LoginDto;
 import org.quiztoria.server.Dto.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/auth")
@@ -36,7 +38,11 @@ public class UserRESTController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto){
-
+        boolean validEmail = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$").matcher(signUpDto.getEmail()).matches();
+        if(!validEmail){
+            return new ResponseEntity<>("Incorrect email address.", HttpStatus.BAD_REQUEST);
+        }
         // add check for user exists in a DB
         if(userRepo.existsByEmail(signUpDto.getEmail())){
             return new ResponseEntity<>("Email is already used!", HttpStatus.BAD_REQUEST);
