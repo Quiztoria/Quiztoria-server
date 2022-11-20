@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/search")
@@ -34,5 +34,24 @@ public class SearchRESTController {
             @RequestParam(value = "yearEnd") int yearEnd
     ){
         return repo.findAllByDateEndGreaterThanEqualAndDateStartLessThanEqual(yearBegin,yearEnd);
+    }
+
+    @GetMapping("/by-time-range/random")
+    public List<Question> drawQuestionsByTimeRange(
+            @RequestParam(value = "yearBegin") int yearBegin,
+            @RequestParam(value = "yearEnd") int yearEnd,
+            @RequestParam(value = "number") int number
+    ){
+        List<Question> all = repo.findAllByDateEndGreaterThanEqualAndDateStartLessThanEqual(yearBegin,yearEnd);
+        List<Question> result = new ArrayList<>();
+        Set<Integer> usedIndexes = new HashSet<>();
+        Random rand = new Random();
+        for(int i = 0; i < number; i++){
+            int nextId = rand.nextInt(all.size());
+            while(usedIndexes.contains(nextId)) nextId = rand.nextInt(all.size());
+            result.add(all.get(nextId));
+            usedIndexes.add(nextId);
+        }
+        return result;
     }
 }
