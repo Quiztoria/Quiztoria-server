@@ -20,7 +20,7 @@ public class Quiz{
     @Getter
     @Setter
     private String QuizName;
-    @OneToMany//(cascade = CascadeType.PERSIST)
+    @ManyToMany//(cascade = CascadeType.PERSIST)
     @Getter
     @Setter
     private List<Question> Questions;
