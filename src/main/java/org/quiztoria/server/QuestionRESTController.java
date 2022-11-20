@@ -77,6 +77,7 @@ public class QuestionRESTController {
     @ApiResponse(code = 200, message = "Successfully retrieved all questions")
     @GetMapping("/all")
     public List<Question> getAll()  {
+
         return repo.findAll();
     }
 

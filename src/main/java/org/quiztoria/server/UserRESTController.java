@@ -1,5 +1,6 @@
 package org.quiztoria.server;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,12 +14,14 @@ import org.quiztoria.server.Dto.LoginDto;
 import org.quiztoria.server.Dto.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(originPatterns = { "" },allowCredentials = "true")
+@CrossOrigin(origins =  "*" )
 public class UserRESTController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -33,7 +36,8 @@ public class UserRESTController {
                 loginDto.getEmail(), loginDto.getPassword()));
 
         SecurityContextHolder.getContext()  .setAuthentication(authentication);
-        return new ResponseEntity<>("{\"resp\":\"ok\"}", HttpStatus.OK);
+
+        return new ResponseEntity<>("{\"resp\":\""+ RequestContextHolder.currentRequestAttributes().getSessionId()+"\"}", HttpStatus.OK);
     }
 
     @PostMapping("/signup")
