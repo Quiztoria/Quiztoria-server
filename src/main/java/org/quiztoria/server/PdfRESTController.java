@@ -15,7 +15,7 @@ import java.io.ByteArrayInputStream;
 
 @RestController
 @RequestMapping("/question")
-@CrossOrigin(origins = "*",allowCredentials = "true")
+@CrossOrigin(originPatterns = { "*" },allowCredentials = "true")
 public class PdfRESTController {
 
     @RequestMapping(value = "/pdfreport", method = RequestMethod.GET,

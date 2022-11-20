@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/quiz")
-@CrossOrigin(origins = "*",allowCredentials = "true")
+@CrossOrigin(originPatterns = { "*" },allowCredentials = "true")
 public class QuizRESTController {
 
     @Autowired
